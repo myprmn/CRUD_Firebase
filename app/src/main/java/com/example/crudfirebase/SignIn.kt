@@ -1,6 +1,7 @@
 package com.example.crudfirebase
 
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -37,8 +38,6 @@ class SignIn : AppCompatActivity() {
             if (email !="" && password!=""){
 //                Toast.makeText(this, "email : "+email+"password : "+password, Toast.LENGTH_LONG).show()
                 DataLogin(email, password)
-
-
             } else {
                 Toast.makeText(this, "Field masih kosong",Toast.LENGTH_LONG).show()
             }
@@ -54,6 +53,7 @@ class SignIn : AppCompatActivity() {
                         this, "Authentication success.",
                         Toast.LENGTH_SHORT
                     ).show()
+                    startActivity(Intent(this,DataUser::class.java))
                 } else {
                     // If sign in fails, display a message to the user.
 //                    Log.w("Sign In", "signInWithEmail:failure", task.exception)

@@ -3,36 +3,35 @@ package com.example.crudfirebase
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
+import org.w3c.dom.Text
 
 class DataAdapter (
-    var results : ArrayList<DataModel.Result>):
-        RecyclerView.Adapter<DataAdapter.MyViewHolder>(){
+    private val userList: ArrayList<DataModel>): RecyclerView.Adapter<DataAdapter.MyViewHolder>(){
 
-    class MyViewHolder (val view: View): RecyclerView.ViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataAdapter.MyViewHolder {
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.view_data_user,
+            parent,false)
+        return MyViewHolder(itemView)
+    }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)= MyViewHolder (
-    LayoutInflater.from(parent.context).inflate(R.layout.view_data_user,parent,false))
+    override fun onBindViewHolder(holder: DataAdapter.MyViewHolder, position: Int) {
+        val currentitem = userList[position]
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val result = results [position]
-        holder.view.tv_DataNama.text = result.email
+        holder.name.text = currentitem.nama
+        holder.email.text = currentitem.email
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return userList.size
     }
 
-//   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = MyViewHolder (
-//        LayoutInflater.from(parent.context).inflate(R.layout.view_data_user,parent,false)
-//    )
-//
-//    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-//        val result = results [position]
-//        holder.view.text = result.email
-//
-//
-//    }
+    class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+        val name : TextView = itemView.findViewById(R.id.tv_DataNama)
+        val email : TextView = itemView.findViewById(R.id.tv_DataEmail)
+    }
 
 
 }

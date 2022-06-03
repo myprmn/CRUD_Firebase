@@ -52,15 +52,6 @@ class SignUp : AppCompatActivity() {
         }
     }
 
-//    private fun saveSignUp() {
-//        val name = etNameSignUp.text.toString()
-//        val email = etEmailSignUp.text.toString()
-//        val uuid = mAuth.uid.toString()
-//        DbSignUp.child("Data Sign Up").child((uuid))
-//            .setValue(User(name,email,uuid))
-//        Log.i("Database Sign Up","Data berhasil dikirim ke Datase Realtime")
-//    }
-
     private fun signUp(email: String, password: String) {
 
         mAuth.createUserWithEmailAndPassword(email, password)
